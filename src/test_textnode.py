@@ -9,6 +9,15 @@ class TestTextNode(unittest.TestCase):
         node2 = TextNode("This is a text node", TextType.BOLD)
         self.assertEqual(node, node2)
 
+    def test_url(self):
+        node = TextNode("This is a text node", TextType.BOLD, "https://www.testurl.tst")
+        self.assertIsNot(node.url, None)
+
+    def test_diff(self):
+        node = TextNode("This is a text node", TextType.ITALIC)
+        node2 = TextNode("This is a text node", TextType.BOLD)
+        self.assertNotEqual(node, node2)
+
 
 if __name__ == "__main__":
     unittest.main()
