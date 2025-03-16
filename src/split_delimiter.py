@@ -25,7 +25,6 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type): #list, str, TextType
         new_nodes.extend(split_nodes)
     return new_nodes
 
-
 def split_nodes_image(old_nodes):
     new_nodes = []
     for old_node in old_nodes:
@@ -51,8 +50,6 @@ def split_nodes_image(old_nodes):
             new_nodes.append(TextNode(original_text, TextType.TEXT))
     return new_nodes
 
-
-
 def split_nodes_link(old_nodes):
     new_nodes = []
     for old_node in old_nodes:
@@ -77,3 +74,16 @@ def split_nodes_link(old_nodes):
         if original_text != "":
             new_nodes.append(TextNode(original_text, TextType.TEXT))
     return new_nodes
+
+def text_to_textnodes(text):
+    # This is **text** with an _italic_ word and a `code block` and an ![obi wan image](https://i.imgur.com/fJRm4Vk.jpeg) and a [link](https://boot.dev)
+    node = TextNode(text, TextType.TEXT)
+    nodes = []
+    bolded = split_nodes_delimiter([node], "**", TextType.BOLD)
+    italic = split_nodes_delimiter(bolded, "_", TextType.ITALIC)
+    coded = split_nodes_delimiter(italic, "`", TextType.CODE)
+    image = split_nodes_image(coded)
+    link = split_nodes_link(image)
+    nodes.extend(link)
+    return nodes
+    
