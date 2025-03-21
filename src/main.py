@@ -7,9 +7,12 @@ source_dir_path = "./static"
 dest_dir_path = "./docs"
 template_path = "template.html"
 dir_path_content = "./content"
-basepath = sys.argv[1] or "/"
+default_basepath = "/"
 
 def main():
+    basepath = default_basepath
+    if len(sys.argv) > 1:
+        basepath = sys.argv[1]
     if os.path.exists(dest_dir_path):
         shutil.rmtree(dest_dir_path)
 
