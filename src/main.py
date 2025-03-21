@@ -7,7 +7,7 @@ source_dir_path = "./static"
 dest_dir_path = "./docs"
 template_path = "template.html"
 dir_path_content = "./content"
-basepath = sys.argv[0] or "/"
+basepath = sys.argv[1] or "/"
 
 def main():
     if os.path.exists(dest_dir_path):
