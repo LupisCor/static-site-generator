@@ -1,10 +1,10 @@
 import os, shutil, sys
 from copystatic import copy_static
-from generate_page import generate_page, generate_pages_recursive
+from generate_page import generate_pages_recursive
 
 
 source_dir_path = "./static"
-dest_dir_path = "./public"
+dest_dir_path = "./docs"
 template_path = "template.html"
 dir_path_content = "./content"
 basepath = sys.argv[0] or "/"
